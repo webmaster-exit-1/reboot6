@@ -7,7 +7,7 @@ Why 40%? Why not 100%? Because I'm not a evil person. And this gives the Victim 
 Like Russian Roulette (Linux), there is a 1 in 6 chance you lose. 
 
 ### This software is intended only for educational purposes. USE AT YOUR OWN RISK. ###
-### The contributors cannot be held liable for damage or loss of data resulting from the use of this repository's code. ###
+### The Author & It's contributors cannot be held liable for damage or loss of data resulting from the use of this repository's code. ###
 
 # To INSTALL the script:
 ### ALL SYSTEMS ###
