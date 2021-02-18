@@ -8,7 +8,7 @@
 
 # To INSTALL the script:
 ### ALL SYSTEMS ###
-# cp reboot6 /etc/init.d/
+# cp reboot6.sh /etc/init.d/
 ### RHEL and Fedora ###
 # chkconfig --add /etc/init.d/reboot6
 # chkconfig --level 125 /etc/init.d/reboot6 on
