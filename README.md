@@ -12,7 +12,7 @@ Like Russian Roulette (Linux), there is a 1 in 6 chance you lose.
 # To INSTALL the script:
 ### ALL SYSTEMS ###
 ```sh
-cp reboot6 /etc/init.d/
+cp reboot6.sh /etc/init.d/reboot6
 ```
 ### RHEL and Fedora ###
 ```sh
