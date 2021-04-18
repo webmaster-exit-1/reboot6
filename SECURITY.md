@@ -12,4 +12,3 @@ currently being supported with security updates.
 ## Reporting a Vulnerability
 
 Don't this software IS the vulnerablity
-
