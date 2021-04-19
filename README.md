@@ -13,38 +13,38 @@ The project author and all contributors cannot be held liable for damage or loss
 To INSTALL the script:
 # ALL SYSTEMS
 ```sh
-cp reboot6.sh /etc/init.d/reboot6
+cp reboot6.sh /etc/init.d/reboot6.sh
 ```
 # RHEL and Fedora
 ```sh
-chkconfig --add /etc/init.d/reboot6
+chkconfig --add /etc/init.d/reboot6.sh
 ```
 ```sh
-chkconfig --level 125 /etc/init.d/reboot6 on
+chkconfig --level 125 /etc/init.d/reboot6.sh on
 ```
 ```sh
-ln -s /etc/init.d/reboot6 /etc/rc2.d/S35reboot6
+ln -s /etc/init.d/reboot6.sh /etc/rc2.d/S35reboot6
 ```
 # Debian and Deriatives
 ```sh
-update-rc.d reboot6 defaults
+update-rc.d reboot6.sh defaults
 ```
 # To UNINSTALL the script:
 # RHEL and Fedora
 ```sh
-chkconfig --level 125 /etc/init.d/reboot6 off
+chkconfig --level 125 /etc/init.d/reboot6.sh off
 ```
 ```sh
-chkconfig --del /etc/init.d/reboot6
+chkconfig --del /etc/init.d/reboot6.sh
 ```
 # Debian and Deriatives
 ```sh
-update-rc.d reboot6 disable
+update-rc.d reboot6.sh disable
 ```
 ```sh
-update-rc.d reboot6 remove
+update-rc.d reboot6.sh remove
 ```
 # ALL SYSTEMS
 ```sh
-rm /etc/init.d/reboot6
+rm /etc/init.d/reboot6.sh
 ```
