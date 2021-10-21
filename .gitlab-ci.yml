@@ -13,13 +13,9 @@ stages:
     - deploy1
 
 before_script:
-  stage: before_script
-  script:
     - 'which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y qtzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade -y)'
 
 after_script:
-  stage: after_script
-  script:
     - 'apt autoremove -y'
     - 'apt autoclean -y'
 
