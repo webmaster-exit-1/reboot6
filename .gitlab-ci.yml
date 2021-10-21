@@ -18,9 +18,11 @@ build1:
 test1:
   stage: test1
   script:
-    - 'reboot --now'
+    - 'alias reboot="systemctl start reboot.target"'
+    - 'reboot'
 
 deploy1:
   stage: deploy1
   script:
+    - 'alias reboot="sudo systemctl start reboot.target"'
     - 'if [ /etc/init.d/reboot6.sh = true ] do reboot else exit 1'
