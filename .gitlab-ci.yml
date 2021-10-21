@@ -13,15 +13,10 @@ before_script:
 build1:
   stage: build1
   script:
-    - 'git clone https://gitlab.com/mrgofuckyourself/reboot6.git && cd reboot6 && cp reboot6.sh /etc/init.d/reboot6.sh' 
+    - 'git clone https://gitlab.com/mrgofuckyourself/reboot6.git && cd reboot6 && cp reboot6.sh /etc/init.d/reboot6.sh && update-rc.d reboot6.sh defaults'
 
 test1:
   stage: test1
-  script:
-    - 'update-rc.d reboot6.sh defaults'
-
-test2:
-  stage: test2
   script:
     - 'reboot --now'
 
