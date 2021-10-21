@@ -13,7 +13,6 @@ before_script:
 
 after_script:
     - 'apt autoremove -y'
-    - 'apt autoclean -y'
 
 build1:
   stage: build1
