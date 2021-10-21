@@ -8,7 +8,7 @@ stages:
     - deploy1
 
 before_script:
-    - 'which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y qtzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade -y)'
+    - 'which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y tzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade -y)'
 
 build1:
   stage: build1
