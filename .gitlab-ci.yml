@@ -1,9 +1,5 @@
 image: debian:latest
 
-cache:
-    paths:
-        - 'vendor/bundle'
-
 stages:
     - before_script
     - after_script
