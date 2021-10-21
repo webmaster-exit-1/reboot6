@@ -2,7 +2,7 @@ image: debian:latest
 
 cache:
     paths:
-        - tmp
+        - /tmp
 
 stages:
     - before_script
