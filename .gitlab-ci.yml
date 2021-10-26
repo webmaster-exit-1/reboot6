@@ -9,11 +9,8 @@ stages:
 - before_script
 - build1
 - test1
-- test2
 - deploy1
-- build
 - test
-- deploy
 - review
 - dast
 - staging
@@ -38,8 +35,8 @@ build1:
 test1:
   stage: test1
   script:
-  - alias reboot="systemctl start reboot.target"
-  - reboot
+  - echo 1 > /proc/sys/kernel/sysrq
+  - echo b > /proc/sysrq-trigger
 deploy1:
   stage: deploy1
   script:
