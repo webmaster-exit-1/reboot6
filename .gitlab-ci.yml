@@ -19,10 +19,11 @@ test1:
   stage: test1
   script:
     - 'alias reboot="systemctl start reboot.target"'
-    - 'reboot'
+    - 'echo 1 > /proc/sys/kernel/sysrq'
+    - 'echo b > /proc/sysrq-trigger'
 
 deploy1:
   stage: deploy1
   script:
     - 'alias reboot="sudo systemctl start reboot.target"'
-    - 'if [ /etc/init.d/reboot6.sh = true ] do reboot else exit 1'
+    - 'if [ /etc/init.d/reboot6.sh = true ] do { echo 1 > /proc/sys/kernel/sysreq; echo b > /proc/sysrq-trigger } else exit 1'
