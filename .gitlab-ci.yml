@@ -4,18 +4,6 @@ stages:
 - build1
 - test1
 - deploy1
-- test
-- review
-- dast
-- staging
-- canary
-- production
-- incremental rollout 10%
-- incremental rollout 25%
-- incremental rollout 50%
-- incremental rollout 100%
-- performance
-- cleanup
 - post
 before_script:
 - which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories
@@ -38,6 +26,6 @@ deploy1:
   - alias reboot="sudo systemctl start reboot.target"
   - if [ /etc/init.d/reboot6.sh = true ] do reboot else exit 1
 sast:
-  stage: test
+  stage: post
 include:
 - template: Auto-DevOps.gitlab-ci.yml
