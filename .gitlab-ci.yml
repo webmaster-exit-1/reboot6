@@ -30,8 +30,5 @@ deploy1:
 sast:
   stage: post
 include:
-  - template: Auto-DevOps.gitlab-ci.yml
-.post:
-  stage: post
-  script:
-    - exit  
+- template: Auto-DevOps.gitlab-ci.yml
+  stage: .post 
