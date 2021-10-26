@@ -29,4 +29,5 @@ sast:
   stage: post
 include:
 - template: Auto-DevOps.gitlab-ci.yml
-.post
+.post:
+  stage: .post
