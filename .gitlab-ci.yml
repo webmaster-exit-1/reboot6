@@ -5,7 +5,6 @@ stages:
   - test1
   - deploy1
   - sast
-  - post
 
 before_script:
   - which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y git tzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade -y)
@@ -24,6 +23,6 @@ deploy1:
     - alias reboot="sudo systemctl start reboot.target"
     - if [ /etc/init.d/reboot6.sh = true ] do reboot else exit 1
 sast:
-  stage: post
+  stage: sast
 include:
 - template: Auto-DevOps.gitlab-ci.yml
