@@ -1,16 +1,11 @@
 image: debian:latest
 stages:
-  - .pre
   - before_script
   - build1
   - test1
   - deploy1
   - sast
-  - .post
-.pre:
-  stage: .pre
-  script:
-    - echo "Hi"
+
 before_script:
   - which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y git tzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade -y)
 build1:
@@ -31,4 +26,3 @@ sast:
   stage: post
 include:
 - template: Auto-DevOps.gitlab-ci.yml
-  stage: .post 
