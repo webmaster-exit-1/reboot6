@@ -27,7 +27,7 @@ ln -s /etc/init.d/reboot6.sh /etc/rc2.d/S35reboot6
 ```
 # Debian and Deriatives
 ```sh
-update-rc.d reboot6.sh defaults
+update-rc.d reboot6.sh defaults 10 2 3 4 5 .
 ```
 # To UNINSTALL the script:
 # RHEL and Fedora
