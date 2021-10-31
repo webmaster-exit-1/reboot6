@@ -6,13 +6,6 @@ stages:
   - deploy1
   - ".post"
 before_script:
-  - apt-get update && apt-get install dpkg-sig curl -y
-  - curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | bash
-  - curl -JLO "https://packages.gitlab.com/runner/gitlab-runner/gpgkey/runner-gitlab-runner-4C80FB51394521E9.pub.gpg"
-  - gpg --import runner-gitlab-runner-4C80FB51394521E9.pub.gpg
-  - dpkg-sig --verify gitlab-runner_amd64.deb
-  - export GITLAB_RUNNER_DISABLE_SKEL=false; sudo -E apt-get install gitlab-runner
-  - ./usr/share/gitlab-runner/post-install
   - which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y git tzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade -y)
 build1:
   stage: build1
