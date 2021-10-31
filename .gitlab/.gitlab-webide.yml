@@ -1,5 +1,9 @@
+script: 
+  - docker run --rm -it -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
+
+
 session_server:
-  listen_address = "https://gitlab.com/mrgofuckyourself/reboot6:8093"
+  - listen_address = "https://gitlab.com/mrgofuckyourself/reboot6:8093"
   advertise_address = "runner-mrgofuckyourself.tld:8093"
   session_timeout = 1800
 
@@ -9,5 +13,3 @@ terminal:
     - apt update -y
   script:
     - sleep 60
-  variables:
-    ENV: "test"
