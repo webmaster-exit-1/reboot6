@@ -3,6 +3,6 @@ terminal:
   image: debian:latest
   before_script:
     - apt update -y
-  script: sleep 5
+  script: sleep 60
   variables:
     ENV: "test"
