@@ -1,6 +1,5 @@
-script: 
-  - docker run --rm -it -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
-
+#script: 
+#  - docker run --rm -it -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
 
 session_server:
   - listen_address = "https://gitlab.com/mrgofuckyourself/reboot6:8093"
