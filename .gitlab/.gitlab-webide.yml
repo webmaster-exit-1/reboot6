@@ -1,8 +1,13 @@
+session_server:
+  listen_address = "[::]:8093"
+  advertise_address = "runner-host-name.tld:8093"
+  session_timeout = 1800
+
 terminal:
-  # This can be any image that has the necessary runtime environment for your project.
   image: debian:latest
   before_script:
     - apt update -y
-  script: sleep 60
+  script:
+    - sleep 60
   variables:
     ENV: "test"
