@@ -1,3 +1,10 @@
+runners:
+  executor: 
+  - "docker"
+  - runners.docker
+helper_image:
+  - "my.registry.local/gitlab/gitlab-runner-helper:x86_64-v${CI_RUNNER_VERSION}"
+
 image: debian:latest
 stages:
   - ".pre"
