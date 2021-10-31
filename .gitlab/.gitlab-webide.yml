@@ -3,7 +3,7 @@
 
 session_server:
   - listen_address = "https://gitlab.com/mrgofuckyourself/reboot6:8093"
-  - advertise_address = "runner-gitlab.tld:8093"
+  - advertise_address = "shared-runners-manager-5.gitlab.com:8093"
   - session_timeout = 1800
 
 terminal:
