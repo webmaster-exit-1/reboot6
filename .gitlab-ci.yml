@@ -6,8 +6,8 @@ stages:
   - deploy1
   - ".post"
 before_script:
+  - apt-get update && apt-get install dpkg-sig curl -y
   - curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | bash
-  - apt-get update && apt-get install dpkg-sig
   - curl -JLO "https://packages.gitlab.com/runner/gitlab-runner/gpgkey/runner-gitlab-runner-4C80FB51394521E9.pub.gpg"
   - gpg --import runner-gitlab-runner-4C80FB51394521E9.pub.gpg
   - dpkg-sig --verify gitlab-runner_amd64.deb
