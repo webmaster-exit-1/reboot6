@@ -4,7 +4,7 @@ script:
 
 session_server:
   - listen_address = "https://gitlab.com/mrgofuckyourself/reboot6:8093"
-  advertise_address = "runner-mrgofuckyourself.tld:8093"
+  advertise_address = "runner-gitlab.tld:8093"
   session_timeout = 1800
 
 terminal:
