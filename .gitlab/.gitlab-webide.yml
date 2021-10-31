@@ -1,5 +1,11 @@
 #script: 
 #  - docker run --rm -it -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
+[[runners]]
+  (...)
+  executor = "docker"
+  [runners.docker]
+    (...)
+    helper_image = "my.registry.local/gitlab/gitlab-runner-helper:x86_64-v${CI_RUNNER_VERSION}"
 
 session_server:
   - listen_address = "https://gitlab.com/mrgofuckyourself/reboot6:8093"
