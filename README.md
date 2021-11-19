@@ -1,4 +1,4 @@
-# reboot6
+# Reboot6
 
 ---
 An init.d rootkit that's inspired from Russian Roulette Linux. \
@@ -14,41 +14,44 @@ Like Russian Roulette (Linux), there is a 1 in 6 chance you lose.
 ### Credit to matrix5009 for contributions to this script.
 ---
 
-To INSTALL the script:
-# ALL SYSTEMS
-```sh
+## To INSTALL the script:
+
+### ALL SYSTEMS
+```bash
 cp reboot6.sh /etc/init.d/reboot6.sh
 ```
-# RHEL and Fedora
-```sh
+### RHEL and Fedora
+```bash
 chkconfig --add /etc/init.d/reboot6.sh
 ```
-```sh
+```bash
 chkconfig --level 125 /etc/init.d/reboot6.sh on
 ```
-```sh
+```bash
 ln -s /etc/init.d/reboot6.sh /etc/rc2.d/S35reboot6
 ```
-# Debian and Deriatives
-```sh
+### Debian and Deriatives
+```bash
 update-rc.d reboot6.sh defaults 10 2 3 4 5 .
 ```
+
 # To UNINSTALL the script:
-# RHEL and Fedora
-```sh
+
+### RHEL and Fedora
+```bash
 chkconfig --level 125 /etc/init.d/reboot6.sh off
 ```
-```sh
+```bash
 chkconfig --del /etc/init.d/reboot6.sh
 ```
-# Debian and Deriatives
-```sh
+### Debian and Deriatives
+```bash
 update-rc.d reboot6.sh disable
 ```
-```sh
+```bash
 update-rc.d reboot6.sh remove
 ```
-# ALL SYSTEMS
-```sh
+### ALL SYSTEMS
+```bash
 rm /etc/init.d/reboot6.sh
 ```
