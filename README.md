@@ -11,6 +11,7 @@ Like Russian Roulette (Linux), there is a 1 in 6 chance you lose.
 * _This software is small, like really really small. XD_
 * _This software is intended only for educational purposes. USE AT YOUR OWN RISK._
 * _The project author and all contributors cannot be held liable for damage or loss of data resulting from the use of this repository's code._
+### Credit to matrix5009 for contributions to this script.
 ---
 
 To INSTALL the script:
