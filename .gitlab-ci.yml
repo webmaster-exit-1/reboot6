@@ -9,7 +9,7 @@ stages:
 
 build:
   stage: .pre
-  script: rspec
+  script: whoami
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
