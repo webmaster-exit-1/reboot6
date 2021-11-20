@@ -12,10 +12,17 @@ build:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
+test:
+  script: rspec
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
 rspec:
   stage: deploy1
   needs:
-    - job: build1
+    - stage: build1
       optional: true
 
 before_script:
