@@ -8,14 +8,14 @@ stages:
   - ".post"
 
 build:
-  stage: build
+  stage: .pre
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 rspec:
-  stage: test
+  stage: deploy1
   needs:
-    - job: build
+    - job: build1
       optional: true
 
 before_script:
