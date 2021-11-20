@@ -9,22 +9,25 @@ stages:
 
 build:
   stage: .pre
+  script: rspec
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-test:
-  script: rspec
+rspec:
+  script: whoami
+  stage: deploy1
   retry:
     max: 2
     when:
       - runner_system_failure
       - stuck_or_timeout_failure
-rspec:
-  stage: deploy1
-  needs:
-    - stage: build1
-      optional: true
+    
 
+job1:
+  stage: .post
+  script:
+      - sudo gitlab-ctl reconfigure
+  
 before_script:
   - which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y git tzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade -y)
 
