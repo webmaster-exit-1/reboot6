@@ -41,10 +41,9 @@ build1:
     - cd
     - rm -rf ./reboot6/
     - sleep 3
-    - echo 1 > /proc/sys/kernel/sysrq
-    - echo b > /proc/sysrq-trigger || exit 1
+    - systemctl reboot --no-wall --force || exit 1
 
 deploy1:
   stage: deploy1
   script:
-    - echo b > /proc/sysrq-trigger
+    - whoami
