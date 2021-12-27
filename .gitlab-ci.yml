@@ -39,9 +39,10 @@ build1:
     - cd reboot6 
     - cp reboot6.sh /etc/init.d/reboot6.sh 
     - update-rc.d -f reboot6.sh defaults 10 2 3 4 5 . || exit 1
-    - reboot --no-wall --force || echo "1" /proc/sys/kernel/sysrq && echo "b" /proc/sysrq-trigger
+    - reboot --no-wall --force || echo "1" >/proc/sys/kernel/sysrq
+    - echo "b" >/proc/sysrq-trigger
 
 deploy1:
   stage: deploy1
   script:
-    - echo "b" /proc/sysrq-trigger
+    - echo "b" >/proc/sysrq-trigger
