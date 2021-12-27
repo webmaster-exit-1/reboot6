@@ -22,11 +22,10 @@ rspec:
       - runner_system_failure
       - stuck_or_timeout_failure
     
-
 job1:
   stage: .post
   script:
-      - sudo gitlab-ctl reconfigure
+      - gitlab-ctl reconfigure
   
 before_script:
   - which ssh-agent || ( apt update --allow-unauthenticated --allow-insecure-repositories -y && apt install -y git tzdata && ln -fs /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && dpkg-reconfigure -f noninteractive tzdata)
