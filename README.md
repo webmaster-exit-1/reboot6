@@ -2,7 +2,7 @@
 
 ---
 An init.d rootkit that's inspired from Russian Roulette Linux. \
-What it does: creates an init process that has a 16% chance of wiping the root ( / ) of the file system durring the bootup (reboot) process. \
+What it does: Creates an init process that has a 16% chance of wiping the root ( / ) of the file system during the boot-up (reboot) process. \
 Why 16%? Why not 100%? Because I'm not a evil person. And this gives the Victim machine the possibilty to remove the rootkit. \
 Like Russian Roulette (Linux), there is a 1 in 6 chance you lose.
 * _This software has no known failsafe's to stop it._
