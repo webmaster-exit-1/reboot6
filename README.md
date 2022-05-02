@@ -1,4 +1,11 @@
-# Reboot6
+<pre>     ______ ______ ______ ______ ______ ______ ________________ ______ 
+    ||R  | ||E  | ||B  | ||O  | ||O  | ||T  | ||             | ||6  | |
+    ||___| ||___| ||___| ||___| ||___| ||___| ||_____________| ||___| |
+    |/____\|/____\|/____\|/____\|/____\|/____\|/______________\|/____\|</pre>
+---
+
+![](./reboot6.gif)
+
 ---
 An init.d rootkit that's inspired from Russian Roulette.
 ---
@@ -16,7 +23,6 @@ Like Russian Roulette, there is a 1 in 6 chance; it all gets deleted.<br>
 **The project author and all contributors cannot be held liable for any damage or loss of data resulting from the use of this repository's code.**
 
 * A special Thank you, & Credit to matrix5009 for contributions to this script.
-
 ---
 
 ## To INSTALL the script:
