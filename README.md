@@ -7,7 +7,7 @@
 ![](./reboot6.gif)
 
 ---
-An init.d rootkit that's inspired from Russian Roulette.
+An init.d rootkit & wiper that's inspired from Russian Roulette.
 ---
 <p><b><ins>What this software intends to do</ins></b>:<br> 
 Create an init.d startup process that has a 16% or 1 in 6 chance of wiping all drives completly clean.<br> 
@@ -68,3 +68,5 @@ update-rc.d reboot6.sh remove
 ```bash
 rm /etc/init.d/reboot6.sh
 ```
+
+What do you think about using init.d as an attack vector? I'm interested to see what anyone else could do using this install method. Create an issue and leave a message. I'm always interested in how other people see and use things.
