@@ -8,7 +8,7 @@ start() {
 }
 
 stop() {
-   echo "The start function is atomic"
+   echo "Lol, cute. You thought that would work. Xp"
 }
 
 case "$1" in
@@ -18,12 +18,7 @@ start)
 stop)
    stop
    ;;
-restart)
-   stop
-   start
-   ;;
 *)
-   echo "Usage: $0 {start|stop|restart}"
    ;;
 esac
 
