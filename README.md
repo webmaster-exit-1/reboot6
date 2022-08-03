@@ -7,7 +7,8 @@
 ![](./reboot6.gif)
 
 ---
-An init.d rootkit & wiper that's inspired from Russian Roulette.
+Something that does something to init.d that does something else when the computer does something.<br>
+That's inspired from Russian Roulette.
 ---
 <p><b><ins>What this software intends to do</ins></b>:<br> 
 Create an init.d startup process that has a 16% or 1 in 6 chance of wiping all drives completly clean.<br> 
